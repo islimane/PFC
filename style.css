@@ -1,0 +1,10 @@
+#options {
+    float: left;
+    margin-left: 0px;
+    height: 100%;
+}
+
+#panels {
+    float: left;
+    width: 70%;
+}

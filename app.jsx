@@ -45,7 +45,9 @@ var Page = React.createClass({
   render: function(){
     return(
       <div>
-        <ButtonGroupInstance />
+        <div id="options">
+          <ButtonGroupInstance />
+        </div>
         <div id="panels"></div>
       </div>
     );
