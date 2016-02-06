@@ -1,0 +1,4 @@
+-> React y Flux para llamadas asíncronas. No se muy bien si esto es lo que
+   necesito o cómo va...
+
+-> 
