@@ -28,13 +28,11 @@ var PanelInstance = React.createClass({
 
 var PanelSet = React.createClass({
   render: function(){
-    var panels = this.props.state;
-    if(this.props.state!=="")
-      panels = this.props.state.data.map(function (panel) {
-        return (
-          <PanelInstance author={panel.author} text={panel.text} />
-        );
-      });
+    var panels = this.props.data.map(function (panel) {
+                    return (
+                      <PanelInstance author={panel.author} text={panel.text} />
+                    );
+                });
     return(
       <div id="panels">
         {panels}
@@ -45,12 +43,12 @@ var PanelSet = React.createClass({
 
 var ButtonGroupInstance = React.createClass({
   handleClick: function() {
-    React.render(<PanelSet state={this.props.state}/>, document.getElementById('panels'));
+    this.props.onShowCommentsClick();
   },
   render: function(){
     return(
       <ButtonGroup vertical>
-        <Button onClick={this.handleClick}>Create div</Button>
+        <Button onClick={this.handleClick}>Show Comments</Button>
         <Button>Button</Button>
         <DropdownButton title="Dropdown" id="bg-vertical-dropdown-1">
           <MenuItem eventKey="1">Dropdown link</MenuItem>
@@ -71,11 +69,13 @@ var ButtonGroupInstance = React.createClass({
   }
 });
 
+
+// This component represent the whole page
 var Page = React.createClass({
   getInitialState: function() {
     return {data: []};
   },
-  componentDidMount: function() {
+  loadCommentsFromServer: function() {
     $.ajax({
       url: this.props.url,
       dataType: 'json',
@@ -88,13 +88,17 @@ var Page = React.createClass({
       }.bind(this)
     });
   },
+  handleShowComments: function() {
+    this.loadCommentsFromServer();
+  },
   render: function(){
     return(
       <div>
         <div id="options">
-          <ButtonGroupInstance state={this.state}/>
+          <ButtonGroupInstance
+          onShowCommentsClick={this.handleShowComments}/>
         </div>
-        <PanelSet state=""/>
+        <PanelSet data={this.state.data}/>
       </div>
     );
   }
