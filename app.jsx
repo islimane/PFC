@@ -1,9 +1,19 @@
-var Alert = ReactBootstrap.Alert;
+////////////////////////
+// Bootstrap Elements //
+////////////////////////
+
+// var Alert = ReactBootstrap.Alert;
 var ButtonGroup = ReactBootstrap.ButtonGroup;
 var Button = ReactBootstrap.Button;
 var DropdownButton = ReactBootstrap.DropdownButton;
 var MenuItem = ReactBootstrap.MenuItem;
 var Panel = ReactBootstrap.Panel;
+
+
+
+/////////
+// App //
+/////////
 
 var PanelInstance = React.createClass({
   render: function(){
