@@ -69,7 +69,6 @@ var ButtonGroupInstance = React.createClass({
   }
 });
 
-
 // This component represent the whole page
 var Page = React.createClass({
   getInitialState: function() {
@@ -104,4 +103,4 @@ var Page = React.createClass({
   }
 });
 
-React.render(<Page url="data.json"/>, demo);
+React.render(<Page url="data.json"/>, content);
